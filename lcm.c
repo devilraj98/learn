@@ -1,26 +1,30 @@
-#include <iostream>
+
+play_arrow
+
+brightness_5
+// C++ program to find LCM of two numbers 
+#include <iostream> 
 using namespace std;
-
-int main()
+ 
+// Recursive function to return gcd of a and b 
+long long gcd(long long int a, long long int b)
 {
-    int n1, n2, max;
-
-    cout << "Enter two numbers: ";
-    cin >> n1 >> n2;
-    
-    // maximum value between n1 and n2 is stored in max
-    max = (n1 > n2) ? n1 : n2;
-
-    do
-    {
-        if (max % n1 == 0 && max % n2 == 0)
-        {
-            cout << "LCM = " << max;
-            break;
-        }
-        else
-            ++max;
-    } while (true);
-    
-    return 0;
+  if (b == 0)
+    return a;
+  return gcd(b, a % b);
 }
+ 
+// Function to return LCM of two numbers 
+long long lcm(int a, int b)
+{
+    return (a / gcd(a, b)) * b;
+}
+  
+// Driver program to test above function 
+int main() 
+{ 
+    int a = 15, b = 20; 
+    cout <<"LCM of " << a << " and "
+         << b << " is " << lcm(a, b); 
+    return 0; 
+} 
